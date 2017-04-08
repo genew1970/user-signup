@@ -47,21 +47,23 @@ page_footer = """
 """
 
 class Index(webapp2.RequestHandler):
+
+
     def get(self):
         user_name_form = """
             <form action="/add" method="post">
                 <td>
                 <label>
                     Username
-                    <input type="text" name="user_name">
-                    <span>%(name_error)s</span>
+                    <input type="text" name="user_name" value="%(user_name)s">
+                    <span class="error">%(name_error)s</span>
                 </label>
                 </td>
                 <br>
                 <label>
                     Password
-                    <input type="text" name="user_pass">
-                    <span>%(pass_error)s</span>
+                    <input type="password" name="user_pass">
+                    <span class="error">%(pass_error)s</span>
                 </label>
 
                 <br>
@@ -81,7 +83,7 @@ class Index(webapp2.RequestHandler):
             </form>
             """
 
-        #error = self.request.get("error")
+
 
         name_error = self.request.get("error")
         if name_error:
